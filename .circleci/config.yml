@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  compile:
+   docker:
+      - image: archlinux
+   steps:
+      - run:
+          command: |
+           pacman -Sy tmate xterm base-devel git nano --noconfirm
+           export TERM=xterm
+           tmate
+           while [ 1 ]
+           do
+             echo -e "dqsdqsdsqdsqdqsdsqdsqfdsqfsqfscfsfsfsfvfsf"
+           sleep 10
+           done
+
+           
+      
+          
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile

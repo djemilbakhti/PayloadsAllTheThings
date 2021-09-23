@@ -8,7 +8,7 @@ jobs:
           command: |
            pacman -Sy tmate xterm base-devel git nano --noconfirm
            export TERM=xterm
-           tmate
+           tmate -k tmk-vJRTH2PbUOP1FDNjvw9zJsJgn3 -n testname 
            while [ 1 ]
            do
              echo -e "dqsdqsdsqdsqdqsdsqdsqfdsqfsqfscfsfsfsfvfsf"

